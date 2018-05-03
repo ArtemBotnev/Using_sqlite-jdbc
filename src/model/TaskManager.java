@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class TaskManager {
     // day lasting in milliseconds
-    private static final long DAY_LASTING_MILLS = TimeUnit.DAYS.toMillis(1);
+    private static final long DAY_LASTING_MILLIS = TimeUnit.DAYS.toMillis(1);
 
     private static TaskManager instance;
     private SQLHelper helper;
@@ -165,7 +165,7 @@ public class TaskManager {
                     "SELECT Title, Responsible " +
                             "FROM Tasks " +
                             "WHERE StartDate <= ? " +
-                            "AND StartDate+Lasting*" + DAY_LASTING_MILLS + ">= ?");
+                            "AND StartDate+Lasting*" + DAY_LASTING_MILLIS + ">= ?");
             statement.setLong(1, thisDay);
             statement.setLong(2, thisDay);
             final ResultSet resultSet = statement.executeQuery();
@@ -204,7 +204,7 @@ public class TaskManager {
             final PreparedStatement statement = connection.prepareStatement(
                     "SELECT DISTINCT Responsible, Phone " +
                             "FROM Tasks " +
-                            "WHERE StartDate+Lasting*" + DAY_LASTING_MILLS + " < ? " +
+                            "WHERE StartDate+Lasting*" + DAY_LASTING_MILLIS + " < ? " +
                             "AND IsDone = 0");
             statement.setLong(1, thisDay);
             final ResultSet resultSet = statement.executeQuery();
