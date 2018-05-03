@@ -1,0 +1,16 @@
+# Output package #
+###################
+/target
+
+# Compiled source #
+###################
+*.class
+
+# Databases #
+###################
+*.db
+
+# Idea generated files #
+###################
+*.iml
+*.idea
